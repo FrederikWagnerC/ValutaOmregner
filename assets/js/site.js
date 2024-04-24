@@ -21,25 +21,25 @@ let result
 
 function valutaBeregner() {
     let kurs
-    if(!kroneBeløb.value) {
+    if (!kroneBeløb.value) {
         alert('Indtast et beløb!')
     } else if (!valutaSelector.value) {
         alert('Vælg en valuta!')
+    } else {
+
+        if (valutaSelector.value === 'Euro') {
+            kurs = euroKurs
+        } else if (valutaSelector.value === 'Dollar') {
+            kurs = dollarKurs
+        } else if (valutaSelector.value === 'Pund') {
+            kurs = pundKurs
+        }
+
+
+        result = (kroneBeløb.value / kurs).toFixed(2)
+
+        valutaOutput.value = result + ' ' + valutaSelector.options[valutaSelector.selectedIndex].innerText
     }
-
-    if (valutaSelector.value === 'Euro') {
-        kurs = euroKurs
-    } else if (valutaSelector.value === 'Dollar') {
-        kurs = dollarKurs
-    } else if (valutaSelector.value === 'Pund') {
-        kurs = pundKurs
-    }
-
-    
-    result = (kroneBeløb.value/kurs).toFixed(2)
-
-    valutaOutput.value = result + ' ' + valutaSelector.value
-
 }
 
 
